@@ -39,8 +39,8 @@ vanitygaps/
 
 
 # TODO
-  - [X] xrdb/
   - [ ] alpha/
+  - [X] xrdb/
   - [ ] activetagindicatorbar/
   - [ ] alternativetags/
   - [ ] bar_height/
