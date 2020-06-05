@@ -39,20 +39,24 @@ vanitygaps/
 
 
 # TODO
-  - [ ] alpha/
-  - [X] xrdb/
-  - [X] activetagindicatorbar/
-  - [X] alternativetags/
-  - [ ] bar_height/
+## Layouts
   - [ ] bottomstack/
   - [ ] centeredmaster/
-  - [ ] colorbar/
+## External apis
+  - [X] xrdb/
   - [ ] dwmc/
   - [ ] fsignal/
+## UI
+  - [ ] alpha/
+  - [ ] colorbar/
+  - [X] activetagindicatorbar/
+  - [X] alternativetags/
+  - [X] bar_height/
+  - [ ] hide_vacant_tags/
+## Others
   - [ ] focusonclick/
   - [ ] fullgaps/
   - [ ] fullscreen/
-  - [ ] hide vacant tags/
   - [ ] movestack/
   - [ ] noborder/
   - [ ] pertag/
