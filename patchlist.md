@@ -48,7 +48,7 @@ autostart/
 ## Others
   - [X] focusonclick/
   - [X] hide_vacant_tags/
-  - [ ] pertag/
+  - [X] pertag/
   - [ ] fullscreen/
   - [ ] movestack/
   - [ ] noborder/
