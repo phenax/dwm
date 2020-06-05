@@ -29,20 +29,11 @@ attachbottom/
 cool_autostart/
 autostart/
 
-gaplessgrid/
-horizgrid/
-
-ru_gaps/
-tilegap/
-uselessgap/
-vanitygaps/
-fullgaps/
-
-
-# TODO
 ## Layouts
   - [ ] bottomstack/
   - [ ] centeredmaster/
+  - [ ] three_column/
+  - [X] horizgrid/
 ## External apis
   - [X] xrdb/
   - [ ] dwmc/
@@ -50,16 +41,17 @@ fullgaps/
 ## UI
   - [ ] alpha/
   - [ ] colorbar/
+  - [X] ru_gaps
   - [X] activetagindicatorbar/
   - [X] alternativetags/
   - [X] bar_height/
 ## Others
   - [X] focusonclick/
   - [X] hide_vacant_tags/
+  - [ ] pertag/
   - [ ] fullscreen/
   - [ ] movestack/
   - [ ] noborder/
-  - [ ] pertag/
   - [ ] push/
   - [ ] scratchpads/
   - [ ] restartsig/
@@ -69,5 +61,4 @@ fullgaps/
   - [ ] statuspadding/
   - [ ] swapfocus/
   - [ ] systray/
-  - [ ] three_column/
   - [ ] zoomswap/
