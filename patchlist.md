@@ -36,6 +36,7 @@ ru_gaps/
 tilegap/
 uselessgap/
 vanitygaps/
+fullgaps/
 
 
 # TODO
@@ -54,8 +55,7 @@ vanitygaps/
   - [X] bar_height/
 ## Others
   - [X] focusonclick/
-  - [ ] hide_vacant_tags/
-  - [ ] fullgaps/
+  - [X] hide_vacant_tags/
   - [ ] fullscreen/
   - [ ] movestack/
   - [ ] noborder/
