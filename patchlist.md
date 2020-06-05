@@ -41,8 +41,8 @@ vanitygaps/
 # TODO
   - [ ] alpha/
   - [X] xrdb/
-  - [ ] activetagindicatorbar/
-  - [ ] alternativetags/
+  - [X] activetagindicatorbar/
+  - [X] alternativetags/
   - [ ] bar_height/
   - [ ] bottomstack/
   - [ ] centeredmaster/
