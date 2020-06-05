@@ -52,9 +52,9 @@ vanitygaps/
   - [X] activetagindicatorbar/
   - [X] alternativetags/
   - [X] bar_height/
-  - [ ] hide_vacant_tags/
 ## Others
-  - [ ] focusonclick/
+  - [X] focusonclick/
+  - [ ] hide_vacant_tags/
   - [ ] fullgaps/
   - [ ] fullscreen/
   - [ ] movestack/
