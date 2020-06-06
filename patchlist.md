@@ -28,6 +28,11 @@ attachbottom/
 cool_autostart/
 autostart/
 
+## Problems/Conflicts
+  - [ ] statusallmons/
+  - [ ] stackmfact/
+
+
 ## Layouts
   - [ ] bottomstack/
   - [ ] centeredmaster/
@@ -48,13 +53,9 @@ autostart/
   - [X] hide_vacant_tags/
   - [X] pertag/
   - [X] fullscreen/
-  - [ ] zoomswap/
-  - [ ] movestack/
+  - [X] movestack/
   - [ ] push/
   - [ ] scratchpads/
-  - [ ] restartsig/
-  - [ ] stackmfact/
-  - [ ] statusallmons/
   - [ ] statuspadding/
   - [ ] swapfocus/
   - [ ] systray/
