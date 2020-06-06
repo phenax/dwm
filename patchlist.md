@@ -1,27 +1,15 @@
 ## Maybe?
-canfocusrule/
-centeredwindowname/
-columns/
-fibonacci/
-gestures/
 monocle count/
 notitle/
 swaptags/
-tab/
-warp/
-xtile/
   - [ ] swapfocus/
 
 ## Dunno?
 autoresize/
-current desktop/
 ewmhtags/
-flextile/
-inplacerotate/
 
 ## Confirm options?
 cool_autostart/
-autostart/
 
 ## Problems/Conflicts/Old
   - [ ] statusallmons/
@@ -31,9 +19,7 @@ autostart/
 
 
 ## Layouts
-  - [ ] bottomstack/
-  - [X] centeredmaster/
-  - [ ] three_column/
+  - [X] three_column/
   - [X] attachbelow/
   - [X] horizgrid/
 ## External apis
