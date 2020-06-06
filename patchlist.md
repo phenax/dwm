@@ -1,6 +1,4 @@
 ## Maybe?
-actualfullscreen/
-alwaysfullscreen/
 canfocusrule/
 centeredwindowname/
 columns/
@@ -36,8 +34,7 @@ autostart/
   - [X] horizgrid/
 ## External apis
   - [X] xrdb/
-  - [ ] dwmc/
-  - [ ] fsignal/
+  - [X] dwmc/
 ## UI
   - [ ] alpha/
   - [ ] colorbar/
@@ -46,12 +43,13 @@ autostart/
   - [X] alternativetags/
   - [X] bar_height/
 ## Others
+  - [ ] noborder/
   - [X] focusonclick/
   - [X] hide_vacant_tags/
   - [X] pertag/
-  - [ ] fullscreen/
+  - [X] fullscreen/
+  - [ ] zoomswap/
   - [ ] movestack/
-  - [ ] noborder/
   - [ ] push/
   - [ ] scratchpads/
   - [ ] restartsig/
@@ -61,4 +59,3 @@ autostart/
   - [ ] statuspadding/
   - [ ] swapfocus/
   - [ ] systray/
-  - [ ] zoomswap/
