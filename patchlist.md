@@ -10,7 +10,7 @@ swaptags/
 tab/
 warp/
 xtile/
-  - [ ] alpha/
+  - [ ] swapfocus/
 
 ## Dunno?
 autoresize/
@@ -28,9 +28,11 @@ attachbottom/
 cool_autostart/
 autostart/
 
-## Problems/Conflicts
+## Problems/Conflicts/Old
   - [ ] statusallmons/
   - [ ] stackmfact/
+  - [ ] statuspadding/
+  - [ ] alpha/
 
 
 ## Layouts
@@ -54,8 +56,5 @@ autostart/
   - [X] pertag/
   - [X] fullscreen/
   - [X] movestack/
-  - [ ] push/
   - [ ] scratchpads/
-  - [ ] statuspadding/
-  - [ ] swapfocus/
-  - [ ] systray/
+  - [X] systray/
