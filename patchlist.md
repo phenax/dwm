@@ -20,11 +20,6 @@ flextile/
 inplacerotate/
 
 ## Confirm options?
-attachabove/
-attachaside/
-attachbelow/
-attachbottom/
-
 cool_autostart/
 autostart/
 
@@ -39,12 +34,12 @@ autostart/
   - [ ] bottomstack/
   - [ ] centeredmaster/
   - [ ] three_column/
+  - [X] attachbelow/
   - [X] horizgrid/
 ## External apis
   - [X] xrdb/
   - [X] dwmc/
 ## UI
-  - [ ] colorbar/
   - [X] ru_gaps
   - [X] activetagindicatorbar/
   - [X] alternativetags/
@@ -56,5 +51,4 @@ autostart/
   - [X] pertag/
   - [X] fullscreen/
   - [X] movestack/
-  - [ ] scratchpads/
   - [X] systray/
