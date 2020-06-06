@@ -32,7 +32,7 @@ autostart/
 
 ## Layouts
   - [ ] bottomstack/
-  - [ ] centeredmaster/
+  - [X] centeredmaster/
   - [ ] three_column/
   - [X] attachbelow/
   - [X] horizgrid/

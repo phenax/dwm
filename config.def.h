@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+#include "tcl.c"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -55,6 +56,7 @@ static const Layout layouts[] = {
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
 	{ "###",      horizgrid },
+	{ "|||",      tcl },
 };
 
 /* key definitions */
