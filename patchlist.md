@@ -10,6 +10,7 @@ swaptags/
 tab/
 warp/
 xtile/
+  - [ ] alpha/
 
 ## Dunno?
 autoresize/
@@ -36,14 +37,13 @@ autostart/
   - [X] xrdb/
   - [X] dwmc/
 ## UI
-  - [ ] alpha/
   - [ ] colorbar/
   - [X] ru_gaps
   - [X] activetagindicatorbar/
   - [X] alternativetags/
   - [X] bar_height/
 ## Others
-  - [ ] noborder/
+  - [X] noborder/
   - [X] focusonclick/
   - [X] hide_vacant_tags/
   - [X] pertag/
@@ -53,7 +53,6 @@ autostart/
   - [ ] push/
   - [ ] scratchpads/
   - [ ] restartsig/
-  - [ ] smartborders/
   - [ ] stackmfact/
   - [ ] statusallmons/
   - [ ] statuspadding/
