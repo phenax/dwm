@@ -32,7 +32,7 @@ static char *colors[][3] = {
 static const Bool focusonwheelscroll = False;
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
@@ -51,11 +51,11 @@ static const char autostart_cmd[] = "~/.bin/with_zsh ~/.config/autostart.sh &";
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
-	{ "###",      horizgrid },
-	{ "|||",      tcl },
+	{ "tall",         tile },    /* first entry is default */
+	{ "float",        NULL },    /* no layout function means floating behavior */
+	{ "moncle",       monocle },
+	{ "grid",         horizgrid },
+	{ "center",       tcl },
 };
 
 /* key definitions */

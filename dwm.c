@@ -880,8 +880,6 @@ drawbar(Monitor *m)
 	/* draw status first so it can be overdrawn by tags later */
 	if (m == selmon) { /* status is only drawn on selected monitor */
 		drw_setscheme(drw, scheme[SchemeNorm]);
-		/*tw = TEXTW(stext) - lrpad + 2; [> 2px right padding <]*/
-		/*drw_text(drw, m->ww - tw, 0, tw, bh, 0, stext, 0);*/
 		tw = sw = TEXTW(stext) - lrpad / 2 + 2; /* 2px right padding */
 		drw_text(drw, m->ww - sw - stw, 0, sw, bh, lrpad / 2 - 2, stext, 0);
  	}
@@ -910,9 +908,11 @@ drawbar(Monitor *m)
 
 		x += w;
 	}
+
+	// Layout symbol
 	w = blw = TEXTW(m->ltsymbol);
 	drw_setscheme(drw, scheme[SchemeNorm]);
-	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
+  x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - sw - stw - x) > bh) {
 		if (m->sel) {
