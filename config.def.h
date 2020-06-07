@@ -9,10 +9,10 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const int user_bh            = 0;        /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
+static const int user_bh            = 18;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const char *fonts[]          = { "Fira Code:size=8", "Font Awesome 5 Free:size=7", "Symbols Nerd Font:size=7" };
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
@@ -21,9 +21,10 @@ static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#005577";
 static char selbgcolor[]            = "#005577";
 static char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+       /*                 fg           bg           border   */
+       [SchemeNorm] =   { normfgcolor, normbgcolor, normbordercolor },
+       [SchemeSel]  =   { selfgcolor,  selbgcolor,  selbordercolor  },
+       [SchemeTitle] =  { "#ffffff",   "#1f2225",   "#ffffff" },
 };
 
 /* False means using the scroll wheel on a window will not change focus */
@@ -74,7 +75,7 @@ static const char *termcmd[]  = { "sensible-terminal", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // Quit window
-	{ MODKEY|ShiftMask,             XK_r,      quit,     {0} },      // Restart dwm
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },      // Restart dwm
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termcmd } }, // Terminal
 	{ MODKEY,                       XK_b,      togglebar,      {0} }, // Toggle status bar
 
