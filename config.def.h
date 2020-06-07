@@ -51,8 +51,8 @@ static const char autostart_cmd[] = "~/.bin/with_zsh ~/.config/autostart.sh &";
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "tall",         tile },    /* first entry is default */
-	{ "float",        NULL },    /* no layout function means floating behavior */
+	{ "tall",         tile },
+	{ "float",        NULL },
 	{ "moncle",       monocle },
 	{ "grid",         horizgrid },
 	{ "center",       tcl },
@@ -75,10 +75,10 @@ static const char *termcmd[]  = { "sensible-terminal", NULL };
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // Quit window
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },      // Restart dwm
+	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },             // Quit window
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },             // Restart dwm
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termcmd } }, // Terminal
-	{ MODKEY,                       XK_b,      togglebar,      {0} }, // Toggle status bar
+	{ MODKEY,                       XK_b,      togglebar,      {0} },             // Toggle status bar
 
   // Focus
 	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
@@ -88,37 +88,36 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} }, // Toggle last tag
 
 	// Resize
-	{ MODKEY|Mod1Mask,              XK_Left,      setmfact,       {.f = -0.05} },
-	{ MODKEY|Mod1Mask,              XK_Right,      setmfact,       {.f = +0.05} },
+	{ MODKEY|Mod1Mask,              XK_Left,   setmfact,       {.f = -0.05} },
+	{ MODKEY|Mod1Mask,              XK_Right,  setmfact,       {.f = +0.05} },
 
 	// Move window
-	{ MODKEY|ShiftMask,             XK_Right,      movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Left,      movestack,      {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Down,      movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Up,      movestack,      {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Tab,    zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Right,  movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Left,   movestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Down,   movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Up,     movestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_z,      zoom,           {0} },
 
 	// Change master count
-	{ MODKEY,                       XK_equal,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_minus,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_equal,  incnmaster,     {.i = +1 } },
+	{ MODKEY,                       XK_minus,  incnmaster,     {.i = -1 } },
 
   // Layouts
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY          ,             XK_f,      fullscreen,     {0} },
-	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },  // (t) Tall
+	{ MODKEY          ,             XK_f,      fullscreen,     {0} },                 // (f) Full screen
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },  // (g) Grid
+	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },  // (w) Center stack
 
 
   // Multimonitor
-	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
-	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, // Focus prev monitor
+	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } }, // Focus next monitor
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
-	{ MODKEY,                       XK_n,      togglealttag,   {0} },
-	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
+	{ MODKEY,                       XK_n,      togglealttag,   {0} }, // Toggle alt tag names
 
-	// Workspaces
+	// Tags
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
