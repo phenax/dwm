@@ -904,7 +904,7 @@ drawbar(Monitor *m)
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
 		drw_text(drw, x, 0, w, bh, wdelta + lrpad / 2, (selmon->alttag ? tagsalt[i] : tags[i]), urg & 1 << i);
 		if (occ & 1 << i)
-			drw_rect(drw, x + boxw, 0, w - ( 2 * boxw + 1), boxw,
+			drw_rect(drw, x + boxs, boxs, boxw, boxw,
 			    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
 			    urg & 1 << i);
 
@@ -2757,7 +2757,7 @@ zoom(const Arg *arg)
 }
 
 void
-runAutostart(void) {
+run_autostart(void) {
 	system(autostart_cmd);
 }
 
@@ -2781,7 +2781,7 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
-	run_autostart();
+  run_autostart();
 	run();
 	cleanup();
 	XCloseDisplay(dpy);
