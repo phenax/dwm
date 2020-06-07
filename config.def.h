@@ -45,6 +45,8 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
 
+static const char autostart_cmd[] = "~/.bin/with_zsh ~/.config/autostart.sh &";
+
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
@@ -72,7 +74,8 @@ static const char *termcmd[]  = { "sensible-terminal", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} }, // Quit window
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } }, // Terminal
+	{ MODKEY|ShiftMask,             XK_r,      quit,     {0} },      // Restart dwm
+	//{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } }, // Terminal
 	{ MODKEY,                       XK_b,      togglebar,      {0} }, // Toggle status bar
 
   // Focus
