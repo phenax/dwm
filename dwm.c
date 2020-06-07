@@ -917,7 +917,14 @@ drawbar(Monitor *m)
 	if ((w = m->ww - sw - stw - x) > bh) {
 		if (m->sel) {
 			drw_setscheme(drw, scheme[m == selmon ? SchemeTitle : SchemeNorm]);
-			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+			if (center_windowname) {
+        int mid = (m->ww - TEXTW(m->sel->name)) / 2 - x;
+        /* make sure name will not overlap on tags even when it is very long */
+        mid = mid >= lrpad / 2 ? mid : lrpad / 2;
+        drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
+      } else {
+        drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
+      }
 			if (m->sel->isfloating)
 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
 		} else {
