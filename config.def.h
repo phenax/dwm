@@ -56,6 +56,7 @@ static const Layout layouts[] = {
 	{ "moncle",       monocle },
 	{ "grid",         horizgrid },
 	{ "center",       tcl },
+	{ "deck",         deck },
 };
 
 /* key definitions */
@@ -107,7 +108,7 @@ static Key keys[] = {
 	{ MODKEY          ,             XK_f,      fullscreen,     {0} },                 // (f) Full screen
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },  // (g) Grid
 	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },  // (w) Center stack
-
+	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[5]} },  // (e) Deck layout
 
   // Multimonitor
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, // Focus prev monitor
