@@ -25,7 +25,7 @@ static char *colors[][3] = {
        /*                 fg           bg           border   */
        [SchemeNorm] =   { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  =   { selfgcolor,  selbgcolor,  selbordercolor  },
-       [SchemeTitle] =  { "#ffffff",   "#1f222f",   "#ffffff" },
+       [SchemeTitle] =  { "#ffffff",   "#252835",   "#ffffff" },
 };
 
 /* False means using the scroll wheel on a window will not change focus */
