@@ -113,8 +113,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      fullscreen,     {0} },                 // (f) Full screen
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },  // (t) Tall
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },  // (g) Grid
-	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[6]} },  // (w) Tall horizontal
-	//{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },  // (w) Center stack
+	{ MODKEY,                       XK_h,      setlayout,      {.v = &layouts[6]} },  // (h) Horizontal tile
+  { MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },  // (w) Wide center stack
 	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[5]} },  // (e) Deck layout
 
   // Multimonitor
