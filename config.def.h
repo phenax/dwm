@@ -7,14 +7,14 @@
 #include "layouts/monocle.c"
 
 static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "tall",         tile }, // 0
-	{ "float",        NULL }, // 1
-	{ "moncle",       monocle }, // 2
-	{ "grid",         horizgrid }, // 3
-	{ "center",       tcl }, // 4
-	{ "deck",         deck }, // 5
-	{ "wide",         tilehoriz }, // 6
+/* index symbol           function */
+  [0] = { "tall",         tile },
+	[1] = { "float",        NULL },
+	[2] = { "moncle",       monocle },
+	[3] = { "grid",         horizgrid },
+	[4] = { "center",       tcl },
+	[5] = { "deck",         deck },
+	[6] = { "wide",         tilehoriz },
 };
 
 
