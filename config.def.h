@@ -1,6 +1,20 @@
 /* See LICENSE file for copyright and license details. */
-#include "tcl.c"
-#include "horizgrid.c"
+#include "layouts/tcl.c"
+#include "layouts/horizgrid.c"
+#include "layouts/tile.c"
+#include "layouts/deck.c"
+#include "layouts/monocle.c"
+
+static const Layout layouts[] = {
+	/* symbol     arrange function */
+	{ "tall",         tile },
+	{ "float",        NULL },
+	{ "moncle",       monocle },
+	{ "grid",         horizgrid },
+	{ "center",       tcl },
+	{ "deck",         deck },
+};
+
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -49,16 +63,6 @@ static const int attachbelow = 1;    /* 1 means attach after the currently activ
 
 static const char autostart_cmd[] = "~/.bin/with_zsh ~/.config/autostart.sh &";
 
-static const Layout layouts[] = {
-	/* symbol     arrange function */
-	{ "tall",         tile },
-	{ "float",        NULL },
-	{ "moncle",       monocle },
-	{ "grid",         horizgrid },
-	{ "center",       tcl },
-	{ "deck",         deck },
-};
-
 /* key definitions */
 #define MODKEY Mod4Mask
 #define TAGKEYS(KEY,TAG) \
@@ -105,7 +109,7 @@ static Key keys[] = {
 
   // Layouts
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },  // (t) Tall
-	{ MODKEY          ,             XK_f,      fullscreen,     {0} },                 // (f) Full screen
+	{ MODKEY,                       XK_f,      fullscreen,     {0} },                 // (f) Full screen
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },  // (g) Grid
 	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },  // (w) Center stack
 	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[5]} },  // (e) Deck layout
