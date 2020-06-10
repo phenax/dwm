@@ -6,15 +6,17 @@
 #include "layouts/deck.c"
 #include "layouts/monocle.c"
 
+enum { VTILE, FLOAT, MONOCLE, GRID, CTILE, DECK, HTILE };
+
 static const Layout layouts[] = {
-/* index symbol           function */
-  [0] = { "tall",         tile },
-	[1] = { "float",        NULL },
-	[2] = { "moncle",       monocle },
-	[3] = { "grid",         horizgrid },
-	[4] = { "center",       tcl },
-	[5] = { "deck",         deck },
-	[6] = { "wide",         tilehoriz },
+/* index      symbol              function */
+  [VTILE]   = { "tall",      tile },
+	[FLOAT]   = { "float",     NULL },
+	[MONOCLE] = { "moncle",    monocle },
+	[GRID]    = { "grid",      horizgrid },
+	[CTILE]   = { "center",    tcl },
+	[DECK]    = { "deck",      deck },
+	[HTILE]   = { "wide",      tilehoriz },
 };
 
 
@@ -110,12 +112,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  incnmaster,     {.i = -1 } },
 
   // Layouts
-	{ MODKEY,                       XK_f,      fullscreen,     {0} },                 // (f) Full screen
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },  // (t) Tall
-	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },  // (g) Grid
-	{ MODKEY,                       XK_h,      setlayout,      {.v = &layouts[6]} },  // (h) Horizontal tile
-  { MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },  // (w) Wide center stack
-	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[5]} },  // (e) Deck layout
+	{ MODKEY,                       XK_f,      fullscreen,     {0} },                     // (f) Full screen
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[VTILE]} },  // (t) Tall
+	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[GRID]} },   // (g) Grid
+	{ MODKEY,                       XK_h,      setlayout,      {.v = &layouts[HTILE]} },  // (h) Horizontal tile
+  { MODKEY,                       XK_w,      setlayout,      {.v = &layouts[CTILE]} },  // (w) Wide center stack
+	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[DECK]} },   // (e) Deck layout
 
   // Multimonitor
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, // Focus prev monitor
