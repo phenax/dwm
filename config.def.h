@@ -2,17 +2,19 @@
 #include "layouts/tcl.c"
 #include "layouts/horizgrid.c"
 #include "layouts/tile.c"
+#include "layouts/tilehoriz.c"
 #include "layouts/deck.c"
 #include "layouts/monocle.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "tall",         tile },
-	{ "float",        NULL },
-	{ "moncle",       monocle },
-	{ "grid",         horizgrid },
-	{ "center",       tcl },
-	{ "deck",         deck },
+	{ "tall",         tile }, // 0
+	{ "float",        NULL }, // 1
+	{ "moncle",       monocle }, // 2
+	{ "grid",         horizgrid }, // 3
+	{ "center",       tcl }, // 4
+	{ "deck",         deck }, // 5
+	{ "wide",         tilehoriz }, // 6
 };
 
 
@@ -108,10 +110,11 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  incnmaster,     {.i = -1 } },
 
   // Layouts
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },  // (t) Tall
 	{ MODKEY,                       XK_f,      fullscreen,     {0} },                 // (f) Full screen
+	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },  // (t) Tall
 	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[3]} },  // (g) Grid
-	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },  // (w) Center stack
+	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[6]} },  // (w) Tall horizontal
+	//{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[4]} },  // (w) Center stack
 	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[5]} },  // (e) Deck layout
 
   // Multimonitor
