@@ -166,7 +166,7 @@ struct Monitor {
 	int showbar;
 	int topbar;
 	Client *clients;
-	Client *sel;
+	Client *sel, *prevsel;
 	Client *stack;
 	Monitor *next;
 	Window barwin;
@@ -996,6 +996,7 @@ focus(Client *c)
 		XSetInputFocus(dpy, root, RevertToPointerRoot, CurrentTime);
 		XDeleteProperty(dpy, root, netatom[NetActiveWindow]);
 	}
+	selmon->prevsel = selmon->sel;
 	selmon->sel = c;
 	drawbars();
 }
@@ -1035,8 +1036,6 @@ focusmtoggle(const Arg *arg)
 		return;
 
 	for (n = 0, c = nexttiled(selmon->clients); c && !nextclient; c = nexttiled(c->next), n++) {
-    // TODO: Add condition to select previously focused client
-
     // If it is focused on master
     if (n < selmon->nmaster && selmon->sel == c)
       is_on_master = 1;
@@ -1051,7 +1050,11 @@ focusmtoggle(const Arg *arg)
   }
 
 	if (nextclient || master) {
-		is_on_master ? focus(nextclient) : focus(master);
+	  if (is_on_master) {
+      selmon->prevsel ? focus(selmon->prevsel) : focus(nextclient);
+    } else {
+      focus(master);
+    }
 		restack(selmon);
 	}
 }
