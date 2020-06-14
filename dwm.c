@@ -1027,27 +1027,31 @@ focusmon(const Arg *arg)
 void
 focusmtoggle(const Arg *arg)
 {
-	Client *c = NULL, *nextclient = NULL;
+	Client *c = NULL, *nextclient = NULL, *master = NULL;
 	unsigned int n;
+	int is_on_master = 0;
 
 	if (!selmon->sel)
 		return;
 
-	for (n = 0, c = nexttiled(selmon->clients); c; c = nexttiled(c->next), n++) {
-    if (n > selmon->nmaster) {
-      // TODO: Add condition to select previously focused client
-      nextclient = c;
-    } else if (selmon->sel != c) {
-      nextclient = c;
-    }
+	for (n = 0, c = nexttiled(selmon->clients); c && !nextclient; c = nexttiled(c->next), n++) {
+    // TODO: Add condition to select previously focused client
 
-    if (nextclient) {
-      break;
+    // If it is focused on master
+    if (n < selmon->nmaster && selmon->sel == c)
+      is_on_master = 1;
+
+    // If unfocused master -> Select master
+    // Else if unfocused client -> Select client
+    if (n < selmon->nmaster && !is_on_master) {
+      if (!master) master = c;
+    } else if (n >= selmon->nmaster && selmon->sel != c) {
+      nextclient = c;
     }
   }
 
-	if (c) {
-		focus(c);
+	if (nextclient || master) {
+		is_on_master ? focus(nextclient) : focus(master);
 		restack(selmon);
 	}
 }
