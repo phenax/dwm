@@ -92,6 +92,7 @@ static Key keys[] = {
   // Focus
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
+	{ Mod1Mask,                     XK_Tab,    focusmtoggle,   {.i = -1 } },
 	{ MODKEY,                       XK_Tab,    view,           {0} }, // Toggle last tag
 
 	// Resize

@@ -220,6 +220,7 @@ static void focus(Client *c);
 static void focusin(XEvent *e);
 static void focusmon(const Arg *arg);
 static void focusstack(const Arg *arg);
+static void focusmtoggle(const Arg *arg);
 static Atom getatomprop(Client *c, Atom prop);
 static Client *wintosystrayicon(Window w);
 static void updatesystray(void);
@@ -1023,6 +1024,33 @@ focusmon(const Arg *arg)
 	focus(NULL);
 }
 
+void
+focusmtoggle(const Arg *arg)
+{
+	Client *c = NULL, *nextclient = NULL;
+	unsigned int n;
+
+	if (!selmon->sel)
+		return;
+
+	for (n = 0, c = nexttiled(selmon->clients); c; c = nexttiled(c->next), n++) {
+    if (n > selmon->nmaster) {
+      // TODO: Add condition to select previously focused client
+      nextclient = c;
+    } else if (selmon->sel != c) {
+      nextclient = c;
+    }
+
+    if (nextclient) {
+      break;
+    }
+  }
+
+	if (c) {
+		focus(c);
+		restack(selmon);
+	}
+}
 void
 focusstack(const Arg *arg)
 {
