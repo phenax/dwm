@@ -85,6 +85,7 @@ static const char *termcmd[]  = { "sensible-terminal", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },             // Quit window
+	{ MODKEY|ControlMask,           XK_Delete, cleartag,       {0} },             // Clear tag
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },             // Restart dwm
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = termcmd } }, // Terminal
 	{ MODKEY,                       XK_b,      togglebar,      {0} },             // Toggle status bar

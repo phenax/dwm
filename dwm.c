@@ -236,6 +236,7 @@ static void grabkeys(void);
 static void incnmaster(const Arg *arg);
 static void keypress(XEvent *e);
 static void killclient(const Arg *arg);
+static void cleartag(const Arg *arg);
 static void loadxrdb(void);
 static void manage(Window w, XWindowAttributes *wa);
 static void mappingnotify(XEvent *e);
@@ -1288,19 +1289,48 @@ fake_signal(void)
 }
 
 void
-killclient(const Arg *arg)
+closeclient(Client *c)
 {
-	if (!selmon->sel)
-		return;
-	if (!sendevent(selmon->sel->win, wmatom[WMDelete], NoEventMask, wmatom[WMDelete], CurrentTime, 0 , 0, 0)) {
+	if (!c) return;
+
+	if (!sendevent(c->win, wmatom[WMDelete], NoEventMask, wmatom[WMDelete], CurrentTime, 0 , 0, 0)) {
 		XGrabServer(dpy);
 		XSetErrorHandler(xerrordummy);
 		XSetCloseDownMode(dpy, DestroyAll);
-		XKillClient(dpy, selmon->sel->win);
+		XKillClient(dpy, c->win);
 		XSync(dpy, False);
 		XSetErrorHandler(xerror);
 		XUngrabServer(dpy);
 	}
+}
+
+void
+killclient(const Arg *arg)
+{
+  closeclient(selmon->sel);
+}
+
+void
+cleartag(const Arg *arg)
+{
+/*#define ISVISIBLE(C)            ((C->tags & C->mon->tagset[C->mon->seltags]))*/
+	/*unsigned int newtags;*/
+
+	/*if (!selmon->sel)*/
+		/*return;*/
+	/*newtags = selmon->sel->tags ^ (arg->ui & TAGMASK);*/
+	/*if (newtags) {*/
+		/*selmon->sel->tags = newtags;*/
+		/*focus(NULL);*/
+		/*arrange(selmon);*/
+	/*}*/
+
+  Client *c;
+  for (c = selmon->clients; c; c = c->next) {
+    if (ISVISIBLE(c)) {
+      closeclient(c);
+    }
+  }
 }
 
 void
