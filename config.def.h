@@ -90,21 +90,17 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },             // Toggle status bar
 
   // Focus
-	{ MODKEY,                       XK_Right,  focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Left,   focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
-	{ MODKEY,                       XK_Up,     focusstack,     {.i = -1 } },
+	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
+	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_Tab,    view,           {0} }, // Toggle last tag
 
 	// Resize
-	{ MODKEY|Mod1Mask,              XK_Left,   setmfact,       {.f = -0.05} },
-	{ MODKEY|Mod1Mask,              XK_Right,  setmfact,       {.f = +0.05} },
+	{ MODKEY|Mod1Mask,              XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|Mod1Mask,              XK_l,      setmfact,       {.f = +0.05} },
 
 	// Move window
-	{ MODKEY|ShiftMask,             XK_Right,  movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Left,   movestack,      {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_Down,   movestack,      {.i = +1 } },
-	{ MODKEY|ShiftMask,             XK_Up,     movestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_z,      zoom,           {0} },
 
 	// Change master count
