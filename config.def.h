@@ -103,7 +103,7 @@ static Key keys[] = {
 	// Move window
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ MODKEY|ShiftMask,             XK_z,      zoom,           {0} },
+	{ Mod1Mask|ShiftMask,           XK_Tab,      zoom,           {0} }, // Swap master with window
 
 	// Change master count
 	{ MODKEY,                       XK_equal,  incnmaster,     {.i = +1 } },
