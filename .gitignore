@@ -1,6 +1,5 @@
 *.o
 dwm
 tags
-config.h
 *.orig
 *.rej
