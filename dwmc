@@ -4,6 +4,19 @@ signal() {
 	xsetroot -name "fsignal:$*"
 }
 
+get_layout_index() {
+  case "$1" in
+    vtile)         echo 0 ;;
+    floating)      echo 1 ;;
+    monocle)       echo 2 ;;
+    grid)          echo 3 ;;
+    centered)      echo 4 ;;
+    deck)          echo 5 ;;
+    htile)         echo 6 ;;
+    *)             echo 0 ;; # default to vtile
+  esac
+}
+
 case $# in
 1)
 	case $1 in
@@ -18,6 +31,9 @@ case $# in
 	;;
 2)
 	case $1 in
+  layout)
+    signal setlayoutex i $(get_layout_index $2)
+    ;;
 	view)
 		signal $1 ui $2
 		;;

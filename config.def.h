@@ -6,6 +6,7 @@
 #include "layouts/deck.c"
 #include "layouts/monocle.c"
 
+// NOTE: If you change the order here, change it in dwmc as well
 enum { VTILE, FLOAT, MONOCLE, GRID, CTILE, DECK, HTILE };
 
 static const Layout layouts[] = {

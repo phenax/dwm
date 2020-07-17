@@ -6,6 +6,7 @@
 #include "layouts/deck.c"
 #include "layouts/monocle.c"
 
+// NOTE: If you change the order here, change it in dwmc as well
 enum { VTILE, FLOAT, MONOCLE, GRID, CTILE, DECK, HTILE };
 
 static const Layout layouts[] = {
@@ -18,6 +19,7 @@ static const Layout layouts[] = {
 	[DECK]    = { "deck",      deck },
 	[HTILE]   = { "wide",      tilehoriz },
 };
+
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
