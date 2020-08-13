@@ -57,6 +57,7 @@ static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ "Gimp",         NULL,       NULL,       0,            1,           -1 },
+  { "xfreerdp",     NULL,       NULL,       0,            0,           -1 },
 	//{ "qutebrowser",  NULL,       NULL,       1 << 6,       0,           -1 },
 };
 
@@ -82,6 +83,7 @@ static const char autostart_cmd[] = "~/.bin/with_zsh ~/.config/autostart.sh &";
 /* commands */
 static const char *termcmd[]  = { "sensible-terminal", NULL };
 
+#include <X11/XF86keysym.h>
 #include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -104,7 +106,7 @@ static Key keys[] = {
 	// Move window
 	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
-	{ Mod1Mask|ShiftMask,           XK_Tab,      zoom,           {0} }, // Swap master with window
+	{ Mod1Mask|ShiftMask,           XK_Tab,    zoom,           {0} }, // Swap master with window
 
 	// Change master count
 	{ MODKEY,                       XK_equal,  incnmaster,     {.i = +1 } },
@@ -112,11 +114,6 @@ static Key keys[] = {
 
   // Layouts
 	{ MODKEY,                       XK_f,      fullscreen,     {0} },                     // (f) Full screen
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[VTILE]} },  // (t) Tall
-	{ MODKEY,                       XK_g,      setlayout,      {.v = &layouts[GRID]} },   // (g) Grid
-	{ MODKEY,                       XK_h,      setlayout,      {.v = &layouts[HTILE]} },  // (h) Horizontal tile
-  { MODKEY,                       XK_w,      setlayout,      {.v = &layouts[CTILE]} },  // (w) Wide center stack
-	{ MODKEY,                       XK_e,      setlayout,      {.v = &layouts[DECK]} },   // (e) Deck layout
 
   // Multimonitor
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } }, // Focus prev monitor
