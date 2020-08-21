@@ -545,6 +545,9 @@ buttonpress(XEvent *e)
 			focus(c);
 		restack(selmon);
 		XAllowEvents(dpy, ReplayPointer, CurrentTime);
+		if (forward_click)
+      XSendEvent(dpy, ev->window, 1, ButtonPressMask, e);
+
 		click = ClkClientWin;
 	}
 	for (i = 0; i < LENGTH(buttons); i++)

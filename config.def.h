@@ -48,7 +48,8 @@ static char *colors[][3] = {
 };
 
 /* False means using the scroll wheel on a window will not change focus */
-static const Bool focusonwheelscroll = False;
+static const short int focusonwheelscroll = 0;
+static const short int forward_click = 1;
 
 /* tagging */
 static const char *tags[]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
