@@ -171,7 +171,6 @@ struct Monitor {
 	Monitor *next;
 	Window barwin;
 	const Layout *lt[2];
-	unsigned int alttag;
 	Pertag *pertag;
 };
 
@@ -271,7 +270,6 @@ static void spawn(const Arg *arg);
 static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
-static void togglealttag();
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
 static void toggletag(const Arg *arg);
@@ -896,9 +894,9 @@ drawbar(Monitor *m)
       continue;
 
 		w = TEXTW(tags[i]);
-		wdelta = selmon->alttag ? abs(TEXTW(tags[i]) - TEXTW(tagsalt[i])) / 2 : 0;
+		wdelta = 0;
 		drw_setscheme(drw, scheme[m->tagset[m->seltags] & 1 << i ? SchemeSel : SchemeNorm]);
-		drw_text(drw, x, 0, w, bh, wdelta + lrpad / 2, (selmon->alttag ? tagsalt[i] : tags[i]), urg & 1 << i);
+		drw_text(drw, x, 0, w, bh, wdelta + lrpad / 2, tags[i], urg & 1 << i);
 		if (occ & 1 << i)
 			drw_rect(drw, x + boxs, boxs, boxw, boxw,
 			    m == selmon && selmon->sel && selmon->sel->tags & 1 << i,
@@ -2070,13 +2068,6 @@ tagmon(const Arg *arg)
 	if (!selmon->sel || !mons->next)
 		return;
 	sendmon(selmon->sel, dirtomon(arg->i));
-}
-
-void
-togglealttag()
-{
-	selmon->alttag = !selmon->alttag;
-	drawbar(selmon);
 }
 
 void

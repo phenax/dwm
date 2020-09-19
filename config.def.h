@@ -51,7 +51,6 @@ static const short int forward_click = 1;
 
 /* tagging */
 static const char *tags[]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-static const char *tagsalt[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -118,8 +117,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } }, // Focus next monitor
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-
-	{ MODKEY,                       XK_n,      togglealttag,   {0} }, // Toggle alt tag names
 
 	// Tags
 	TAGKEYS(                        XK_1,                      0)
