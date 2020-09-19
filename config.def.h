@@ -1,5 +1,4 @@
 /* See LICENSE file for copyright and license details. */
-#include "layouts/tcl.c"
 #include "layouts/horizgrid.c"
 #include "layouts/tile.c"
 #include "layouts/tilehoriz.c"
@@ -7,7 +6,7 @@
 #include "layouts/monocle.c"
 
 // NOTE: If you change the order here, change it in dwmc as well
-enum { VTILE, FLOAT, MONOCLE, GRID, CTILE, DECK, HTILE };
+enum { VTILE, FLOAT, MONOCLE, GRID, DECK, HTILE };
 
 static const Layout layouts[] = {
 /* index      symbol              function */
@@ -15,7 +14,6 @@ static const Layout layouts[] = {
 	[FLOAT]   = { "float",     NULL },
 	[MONOCLE] = { "moncle",    monocle },
 	[GRID]    = { "grid",      horizgrid },
-	[CTILE]   = { "center",    tcl },
 	[DECK]    = { "deck",      deck },
 	[HTILE]   = { "wide",      tilehoriz },
 };

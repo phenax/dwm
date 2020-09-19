@@ -10,9 +10,8 @@ get_layout_index() {
     floating)      echo 1 ;;
     monocle)       echo 2 ;;
     grid)          echo 3 ;;
-    centered)      echo 4 ;;
-    deck)          echo 5 ;;
-    htile)         echo 6 ;;
+    deck)          echo 4 ;;
+    htile)         echo 5 ;;
     *)             echo 0 ;; # default to vtile
   esac
 }
