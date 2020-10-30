@@ -51,6 +51,7 @@ static const short int forward_click = 1;
 
 /* tagging */
 static const char *tags[]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+#define TAG_NAME_FORMAT "[%d] %s"
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
@@ -191,6 +192,7 @@ tagall(const Arg *arg)
 static Signal signals[] = {
 	/* signum           function */
 	{ "focusstack",     focusstack },
+	{ "settagname",     settagname },
 	{ "setmfact",       setmfact },
 	{ "togglebar",      togglebar },
 	{ "incnmaster",     incnmaster },

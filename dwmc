@@ -30,6 +30,9 @@ case $# in
 	;;
 2)
 	case $1 in
+	settagname)
+    signal settagname v "$2"
+    ;;
   layout)
     signal setlayoutex i $(get_layout_index $2)
     ;;

@@ -256,6 +256,7 @@ static void run(void);
 static void scan(void);
 static int sendevent(Window w, Atom proto, int m, long d0, long d1, long d2, long d3, long d4);
 static void sendmon(Client *c, Monitor *m);
+static void settagname(const Arg* arg);
 static void setclientstate(Client *c, long state);
 static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
@@ -928,6 +929,7 @@ drawbar(Monitor *m)
 			drw_rect(drw, x, 0, w, bh, 1, 1);
 		}
 	}
+
 	drw_map(drw, m->barwin, 0, 0, m->ww - stw, bh);
 }
 
@@ -1249,7 +1251,12 @@ fake_signal(void)
 				sscanf(fsignal + len_indicator + n, "%u", &(arg.ui));
 			else if (strncmp(param, "f", n - len_str_sig) == 0)
 				sscanf(fsignal + len_indicator + n, "%f", &(arg.f));
-			else return 1;
+			else if (strncmp(param, "v", n - len_str_sig) == 0) {
+			  int size = 10;
+        char *value = ecalloc(size, sizeof(char));
+				sscanf(fsignal + len_indicator + n, "%10s", value);
+				arg.v = value;
+      } else return 1;
 
 			// Check if a signal was found, and if so handle it
 			for (i = 0; i < LENGTH(signals); i++)
@@ -2704,6 +2711,20 @@ systraytomon(Monitor *m) {
 void
 run_autostart(void) {
 	system(autostart_cmd);
+}
+
+void
+settagname(const Arg* arg) {
+  int i = 0;
+
+  for (i = 0; i < LENGTH(tags); i++) {
+    if (selmon->sel && selmon->sel->tags & 1 << i) {
+      char *tagtext = ecalloc(3 + 10, sizeof(char));
+      sprintf(tagtext, TAG_NAME_FORMAT, i + 1, (char *) arg->v);
+      tags[i] = tagtext;
+      drawbars();
+    }
+  }
 }
 
 int
