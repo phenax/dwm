@@ -2715,16 +2715,16 @@ run_autostart(void) {
 
 void
 settagname(const Arg* arg) {
-  int i = 0;
-
-  for (i = 0; i < LENGTH(tags); i++) {
-    if (selmon->sel && selmon->sel->tags & 1 << i) {
+  for (int i = 0; i < LENGTH(tags); i++) {
+    long int t = selmon->tagset[selmon->seltags];
+    if (t & 1 << i) {
       char *tagtext = ecalloc(3 + 10, sizeof(char));
       sprintf(tagtext, TAG_NAME_FORMAT, i + 1, (char *) arg->v);
       tags[i] = tagtext;
-      drawbars();
     }
   }
+
+  drawbars();
 }
 
 int
