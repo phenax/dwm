@@ -51,7 +51,9 @@ static const short int forward_click = 1;
 
 /* tagging */
 static const char *tags[]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-#define TAG_NAME_FORMAT "[%d: %s]"
+
+// (index: int, name: char*) => format_string, ...values in the same order as they appear in format_string
+#define TAG_NAME_FORMATTER(index, name) "%d: %s", index, name
 
 static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */

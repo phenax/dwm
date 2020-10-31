@@ -2719,7 +2719,7 @@ settagname(const Arg* arg) {
     long int t = selmon->tagset[selmon->seltags];
     if (t & 1 << i) {
       char *tagtext = ecalloc(3 + 10, sizeof(char));
-      sprintf(tagtext, TAG_NAME_FORMAT, i + 1, (char *) arg->v);
+      sprintf(tagtext, TAG_NAME_FORMATTER(i + 1, (char *) arg->v));
       tags[i] = tagtext;
     }
   }
