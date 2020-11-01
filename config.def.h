@@ -21,6 +21,9 @@ static const char *colors[][3]      = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
+// (index: int, name: char*) => format_string, ...values in the same order as they appear in format_string
+#define TAG_NAME_FORMATTER(index, name) "%d: %s", index, name
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -182,4 +185,5 @@ static Signal signals[] = {
 	{ "quit",           quit },
 	{ "setlayout",      setlayout },
 	{ "setlayoutex",    setlayoutex },
+	{ "settagname",     settagname },
 };

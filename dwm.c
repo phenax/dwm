@@ -208,6 +208,7 @@ static void setfocus(Client *c);
 static void setfullscreen(Client *c, int fullscreen);
 static void setlayout(const Arg *arg);
 static void setmfact(const Arg *arg);
+static void settagname(const Arg* arg);
 static void setup(void);
 static void seturgent(Client *c, int urg);
 static void showhide(Client *c);
@@ -1032,7 +1033,12 @@ fake_signal(void)
 				sscanf(fsignal + len_indicator + n, "%u", &(arg.ui));
 			else if (strncmp(param, "f", n - len_str_sig) == 0)
 				sscanf(fsignal + len_indicator + n, "%f", &(arg.f));
-			else return 1;
+			else if (strncmp(param, "v", n - len_str_sig) == 0) {
+				int size = 10;
+				char *value = ecalloc(size, sizeof(char));
+				sscanf(fsignal + len_indicator + n, "%10s", value);
+				arg.v = value;
+			} else return 1;
 
 			// Check if a signal was found, and if so handle it
 			for (i = 0; i < LENGTH(signals); i++)
@@ -1576,6 +1582,20 @@ setmfact(const Arg *arg)
 		return;
 	selmon->mfact = f;
 	arrange(selmon);
+}
+
+void
+settagname(const Arg* arg) {
+	for (int i = 0; i < LENGTH(tags); i++) {
+		long int t = selmon->tagset[selmon->seltags];
+		if (t & 1 << i) {
+			char *tagtext = ecalloc(3 + 10, sizeof(char));
+			sprintf(tagtext, TAG_NAME_FORMATTER(i + 1, (char *) arg->v));
+			tags[i] = tagtext;
+		}
+	}
+
+	drawbars();
 }
 
 void
