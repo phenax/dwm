@@ -184,6 +184,6 @@ static Signal signals[] = {
 	{ "killclient",     killclient },
 	{ "quit",           quit },
 	{ "setlayout",      setlayout },
-	{ "setlayoutex",    setlayoutex },
-	{ "settagname",     settagname },
+  { "setlayoutex",    setlayoutex },
+  { "settagname",     settagname },
 };

@@ -1034,11 +1034,11 @@ fake_signal(void)
 			else if (strncmp(param, "f", n - len_str_sig) == 0)
 				sscanf(fsignal + len_indicator + n, "%f", &(arg.f));
 			else if (strncmp(param, "v", n - len_str_sig) == 0) {
-			  int size = 10;
-        char *value = ecalloc(size, sizeof(char));
+				int size = 10;
+				char *value = ecalloc(size, sizeof(char));
 				sscanf(fsignal + len_indicator + n, "%10s", value);
 				arg.v = value;
-      } else return 1;
+			} else return 1;
 
 			// Check if a signal was found, and if so handle it
 			for (i = 0; i < LENGTH(signals); i++)
@@ -1586,16 +1586,16 @@ setmfact(const Arg *arg)
 
 void
 settagname(const Arg* arg) {
-  for (int i = 0; i < LENGTH(tags); i++) {
-    long int t = selmon->tagset[selmon->seltags];
-    if (t & 1 << i) {
-      char *tagtext = ecalloc(3 + 10, sizeof(char));
-      sprintf(tagtext, TAG_NAME_FORMATTER(i + 1, (char *) arg->v));
-      tags[i] = tagtext;
-    }
-  }
+	for (int i = 0; i < LENGTH(tags); i++) {
+		long int t = selmon->tagset[selmon->seltags];
+		if (t & 1 << i) {
+			char *tagtext = ecalloc(3 + 10, sizeof(char));
+			sprintf(tagtext, TAG_NAME_FORMATTER(i + 1, (char *) arg->v));
+			tags[i] = tagtext;
+		}
+	}
 
-  drawbars();
+	drawbars();
 }
 
 void
