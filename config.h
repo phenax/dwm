@@ -51,6 +51,8 @@ static const short int forward_click = 1;
 
 /* tagging */
 static const char *tags[]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+// (index: int, name: char*) => format_string, ...values in the same order as they appear in format_string
 #define TAG_NAME_FORMATTER(index, name) "%d: %s", index, name
 
 static const Rule rules[] = {
@@ -66,7 +68,7 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
 
-static const char autostart_cmd[] = "~/.bin/with_zsh ~/.config/autostart.sh &";
+static const char autostart_cmd[] = "~/nixos/packages/dwm/autostart.sh &";
 
 /* key definitions */
 #define MODKEY Mod4Mask

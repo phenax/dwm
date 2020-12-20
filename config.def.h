@@ -68,7 +68,7 @@ static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
 
-static const char autostart_cmd[] = "~/.bin/with_zsh ~/.config/autostart.sh &";
+static const char autostart_cmd[] = "~/nixos/packages/dwm/autostart.sh &";
 
 /* key definitions */
 #define MODKEY Mod4Mask
