@@ -31,7 +31,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int user_bh            = 18;       /* 0 means that dwm will calculate bar height, >= 1 means dwm will user_bh as bar height */
 static const int center_windowname  = 0;        /* 0 is the default dwm behavior. 1 will center the title */
-static const char *fonts[]          = { "JetBrains Mono:size=8", "Font Awesome 5 Free:size=7", "Symbols Nerd Font:size=7" };
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=8", "Font Awesome 5 Free:size=7", "Symbols Nerd Font:size=7" };
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
