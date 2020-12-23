@@ -50,7 +50,7 @@ static const short int focusonwheelscroll = 0;
 static const short int forward_click = 1;
 
 /* tagging */
-static const char *tags[]    = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[]    = { "1", "2", "3", "4", "5", "6: www", "7: meet", "8", "9: notes" };
 
 // (index: int, name: char*) => format_string, ...values in the same order as they appear in format_string
 #define TAG_NAME_FORMATTER(index, name) "%d: %s", index, name
