@@ -25,9 +25,6 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-// const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", NULL };
-// const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-e", "ranger", NULL };
-// const char *spcmd3[] = {"keepassxc", NULL };
 
 typedef enum  {
 	SP_TERMINAL = 0,
@@ -40,8 +37,12 @@ typedef enum  {
 	{NAME, (const char*[]){"st", "-n", NAME, "-g", SIZE, __VA_ARGS__ }}
 
 static Sp scratchpads[] = {
-	[SP_TERMINAL] = SP_IN_TERM("spterm", SP_SIZE_SMALL, NULL),
-	[SP_NOTES]    = SP_IN_TERM("spnotes", SP_SIZE_SMALL, "-d", "/home/imsohexy/nixos/extras/notes", "-e", "nvim", "index.norg", NULL),
+	[SP_TERMINAL] =
+		SP_IN_TERM("spterm", SP_SIZE_SMALL, NULL),
+
+	[SP_NOTES]    =
+		SP_IN_TERM("spnotes", SP_SIZE_SMALL, "-d", "/home/imsohexy/nixos/extras/notes", "-e",
+			"nvim", "index.norg", NULL),
 };
 
 
@@ -73,12 +74,14 @@ static const int layoutaxis[] = {
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
+	{ "[]=",      tile },
+	{ "><>",      NULL },
 	{ "[M]",      monocle },
 };
 
 /* key definitions */
 #define MODKEY Mod1Mask
+#define ALTKEY ControlMask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -108,32 +111,56 @@ ResourcePref resources[] = {
 		{ "mfact",      		  	FLOAT,   &mfact },
 };
 
+#include "movestack.c"
+
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ "st", NULL } } },
-	{ MODKEY,                       XK_b,      togglebar,      {0} },
+	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },             // Quit window
+	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },             // Restart dwm
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ "sensible-terminal", NULL } } },
+	// { MODKEY,                       XK_b,      togglebar,      {0} },
+
+	// Focus
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      shiftmastersplit, {.i = +1} },   /* increase the number of tiled clients in the master area */
-	{ MODKEY,                       XK_d,      shiftmastersplit, {.i = -1} },   /* reduce the number of tiled clients in the master area */
-	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
-	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+
+	// Move window
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+
+	// Inc/Dec master window count
+	{ MODKEY,                       XK_equal,  shiftmastersplit, {.i = +1} },
+	{ MODKEY,                       XK_minus,  shiftmastersplit, {.i = -1} },
+
+	// Resize
+	{ MODKEY|ALTKEY,                XK_h,      setmfact,       {.f = -0.05} },
+	{ MODKEY|ALTKEY,                XK_l,      setmfact,       {.f = +0.05} },
+
+	// Layout
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_c,      killclient,     {0} },
 	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,             					XK_f,      fullscreen,     {0} },
-	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
-	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
-	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_backslash,  togglefloating, {0} },
+	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[1]} },
+	// { MODKEY,                       XK_space,  setlayout,      {0} },
+	{ MODKEY|ControlMask,           XK_t,        rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
+	{ MODKEY|ControlMask,           XK_y,        rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
+	{ MODKEY|ControlMask,           XK_Return,   rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
+	{ MODKEY|ControlMask|ShiftMask, XK_Tab,      mirrorlayout,     {0} },
+
+	// Monitor
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+
+	// Scratchpads
 	{ MODKEY,            						XK_t,  	   togglescratch,  {.ui = SP_TERMINAL } },
 	{ MODKEY,            						XK_n,	   	 togglescratch,  {.ui = SP_NOTES } },
+
+	// Workspaces
+	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
+	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -143,11 +170,6 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask,           XK_t,      rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
-	{ MODKEY|ControlMask,           XK_Tab,    rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
-	{ MODKEY|ControlMask|ShiftMask, XK_Tab,    rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
-	{ MODKEY|ControlMask,           XK_Return, mirrorlayout,     {0} },
 };
 
 /* button definitions */

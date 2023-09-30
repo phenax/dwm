@@ -5,18 +5,19 @@
   - (x) https://dwm.suckless.org/patches/fullscreen/
   - (x) https://dwm.suckless.org/patches/hide_vacant_tags/
   - (x) https://dwm.suckless.org/patches/xresources/
+  - (x) https://dwm.suckless.org/patches/uselessgaps/
+  - (x) movestack
 
 * Later
-  - ( ) https://dwm.suckless.org/patches/gaps/
+  - https://dwm.suckless.org/patches/autostart/
   - https://dwm.suckless.org/patches/bar_height/
   - https://dwm.suckless.org/patches/cfacts/
-  - https://dwm.suckless.org/patches/autostart/
 
 * Notes
+  - https://dwm.suckless.org/patches/dwmc/
+  - https://dwm.suckless.org/patches/alwayscenter/
+  - https://dwm.suckless.org/patches/activemonitor/
   - https://dwm.suckless.org/patches/bartoggle/
   - https://dwm.suckless.org/patches/deck/
-  - https://dwm.suckless.org/patches/dwmc/
-  - https://dwm.suckless.org/patches/activemonitor/
   - https://dwm.suckless.org/patches/actualfullscreen/
-  - https://dwm.suckless.org/patches/alwayscenter/
   - https://dwm.suckless.org/patches/bottomstack/
