@@ -42,4 +42,10 @@ uninstall:
 	rm -f ${DESTDIR}${PREFIX}/bin/dwm\
 		${DESTDIR}${MANPREFIX}/man1/dwm.1
 
+x:
+	Xephyr -br -ac -noreset -screen 1280x720 :1
+
+test: dwm
+	DISPLAY=:1 ./dwm
+
 .PHONY: all clean dist install uninstall

@@ -1,7 +1,7 @@
 with import <nixpkgs> { };
 stdenv.mkDerivation rec {
   name = "local-dwm-${version}";
-  version = "6.2.0";
+  version = "6.4.0";
 
   src = ./.;
 
@@ -9,7 +9,8 @@ stdenv.mkDerivation rec {
     libX11
     libXinerama
     libXft
-
+    xorg.xorgserver
+    clang
   ];
 
   unpackPhase = ''cp -r $src/* .'';
