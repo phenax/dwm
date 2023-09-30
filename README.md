@@ -1,25 +1,6 @@
 # dwm - dynamic window manager
 dwm is an extremely fast, small, and dynamic window manager for X.
 
-
-## This fork
-Bunch of patches listed in the `/patches` directory.
-
-* Layouts - tile, monocle, center tile, horizontal grid, deck(kinda like tall but the stack is monocle-ized)
-* Gaps
-* dwmc - CLI to interact with dwm
-* Better fullscreen
-* Per tag layouts
-* Load colors from xresources
-* Systray
-* Attach windows below the currently focused window
-* Alternate tags
-* ./addpatch.sh scirpt for easy patching
-
-## Requirements
-In order to build dwm you need the Xlib header files.
-
-
 ## Installation
 Edit config.mk to match your local setup (dwm is installed into
 the /usr/local namespace by default).

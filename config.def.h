@@ -36,6 +36,9 @@ typedef enum  {
 #define SP_IN_TERM(NAME, SIZE, ...)  \
 	{NAME, (const char*[]){"st", "-n", NAME, "-g", SIZE, __VA_ARGS__ }}
 
+#define SP_BIND_KEY(MOD, KEY, SP_ID) \
+	{ MOD, KEY, togglescratch,  {.ui = KEY } },
+
 static Sp scratchpads[] = {
 	[SP_TERMINAL] =
 		SP_IN_TERM("spterm", SP_SIZE_SMALL, NULL),
@@ -147,6 +150,7 @@ static const Key keys[] = {
 	{ MODKEY|ControlMask,           XK_y,        rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
 	{ MODKEY|ControlMask,           XK_Return,   rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
 	{ MODKEY|ControlMask|ShiftMask, XK_Tab,      mirrorlayout,     {0} },
+	{ MODKEY|ShiftMask,             XK_b,        togglebar,        {0} },
 
 	// Monitor
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -155,8 +159,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	// Scratchpads
-	{ MODKEY,            						XK_t,  	   togglescratch,  {.ui = SP_TERMINAL } },
-	{ MODKEY,            						XK_n,	   	 togglescratch,  {.ui = SP_NOTES } },
+	SP_BIND_KEY(MODKEY, XK_t, SP_TERMINAL),
+	SP_BIND_KEY(MODKEY, XK_n, SP_NOTES),
 
 	// Workspaces
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
