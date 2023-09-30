@@ -2,6 +2,7 @@
 
 /* appearance */
 static unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int gappx     = 4;        /* gaps between windows */
 static unsigned int snap      = 32;       /* snap pixel */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
@@ -61,7 +62,7 @@ static const Rule rules[] = {
 /* layout(s) */
 static float mfact     = 0.6; /* factor of master area size [0.05..0.95] */
 // static int nmaster     = 1;    /* number of clients in master area */
-static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
 static const int layoutaxis[] = {

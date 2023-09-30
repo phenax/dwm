@@ -137,6 +137,8 @@ tile(Monitor *m)
 	/* master */
 	n1 = (m->ltaxis[1] != 1 || w1 / m->msplit < bh) ? 1 : m->msplit;
 	n2 = (m->ltaxis[1] != 2 || h1 / m->msplit < bh) ? 1 : m->msplit;
+	int gap = n > 1 ? gappx : 0;
+	// TODO: Figure out how to do gaps
 	for(i = 0, c = nexttiled(m->clients); i < m->msplit; c = nexttiled(c->next), i++) {
 		resize(c, x1, y1,
 			(m->ltaxis[1] == 1 && i + 1 == m->msplit) ? X1 - x1 - 2 * c->bw : w1 / n1 - 2 * c->bw,
