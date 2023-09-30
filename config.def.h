@@ -27,27 +27,27 @@ typedef struct {
 } Sp;
 
 typedef enum  {
-	SP_TERMINAL = 0,
-	SP_NOTES = 1,
-	SP_SYSMONITOR = 1,
+	SP_TERMINAL,
+	SP_NOTES,
+	SP_SYSMONITOR,
 } SpType;
 
 #define SP_IN_TERM(NAME, SIZE, ...)  \
 	{NAME, (const char*[]){"st", "-n", NAME, "-g", SIZE, __VA_ARGS__ }}
 
 #define SP_BIND_KEY(MOD, KEY, SP_ID) \
-	{ MOD, KEY, togglescratch,  {.ui = KEY } },
+	{ MOD, KEY, togglescratch,  {.ui = SP_ID } }
 
 static Sp scratchpads[] = {
 	[SP_TERMINAL] =
-		SP_IN_TERM("spterm", "140x40", NULL),
+		SP_IN_TERM("spterm", "150x40", NULL),
 
 	[SP_NOTES] =
-		SP_IN_TERM("spnotes", "170x40", "-d", "/home/imsohexy/nixos/extras/notes", "-e",
+		SP_IN_TERM("spnotes", "210x50", "-d", "/home/imsohexy/nixos/extras/notes", "-e",
 			"nvim", "index.norg", NULL),
 
 	[SP_SYSMONITOR] =
-		SP_IN_TERM("spmon", "170x40", "-e", "gotop", NULL),
+		SP_IN_TERM("spmon", "210x50", "-e", "gotop", NULL),
 };
 
 
