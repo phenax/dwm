@@ -29,9 +29,8 @@ typedef struct {
 typedef enum  {
 	SP_TERMINAL = 0,
 	SP_NOTES = 1,
+	SP_SYSMONITOR = 1,
 } SpType;
-
-#define SP_SIZE_SMALL "120x34"
 
 #define SP_IN_TERM(NAME, SIZE, ...)  \
 	{NAME, (const char*[]){"st", "-n", NAME, "-g", SIZE, __VA_ARGS__ }}
@@ -41,11 +40,14 @@ typedef enum  {
 
 static Sp scratchpads[] = {
 	[SP_TERMINAL] =
-		SP_IN_TERM("spterm", SP_SIZE_SMALL, NULL),
+		SP_IN_TERM("spterm", "140x40", NULL),
 
-	[SP_NOTES]    =
-		SP_IN_TERM("spnotes", SP_SIZE_SMALL, "-d", "/home/imsohexy/nixos/extras/notes", "-e",
+	[SP_NOTES] =
+		SP_IN_TERM("spnotes", "170x40", "-d", "/home/imsohexy/nixos/extras/notes", "-e",
 			"nvim", "index.norg", NULL),
+
+	[SP_SYSMONITOR] =
+		SP_IN_TERM("spmon", "170x40", "-e", "gotop", NULL),
 };
 
 
@@ -61,6 +63,7 @@ static const Rule rules[] = {
 	{ "easyeffects",    NULL,       NULL,       1 << 4,       					0,			-1 },
 	{ NULL,				      "spterm",		NULL,				SPTAG(SP_TERMINAL),			1,			-1 },
 	{ NULL,				      "spnotes",	NULL,				SPTAG(SP_NOTES),				1,			-1 },
+	{ NULL,				      "spmon",	NULL,				SPTAG(SP_SYSMONITOR),				1,			-1 },
 };
 
 /* layout(s) */
@@ -83,8 +86,8 @@ static const Layout layouts[] = {
 };
 
 /* key definitions */
-#define MODKEY Mod1Mask
-#define ALTKEY ControlMask
+#define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -161,6 +164,7 @@ static const Key keys[] = {
 	// Scratchpads
 	SP_BIND_KEY(MODKEY, XK_t, SP_TERMINAL),
 	SP_BIND_KEY(MODKEY, XK_n, SP_NOTES),
+	SP_BIND_KEY(MODKEY, XK_o, SP_SYSMONITOR),
 
 	// Workspaces
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
