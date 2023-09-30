@@ -24,6 +24,9 @@ static char *colors[][3] = {
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
+/* include(s) depending on the tags array */
+#include "flextile.h"
+
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -36,10 +39,15 @@ static const Rule rules[] = {
 
 /* layout(s) */
 static float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
-static int nmaster     = 1;    /* number of clients in master area */
+// static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
+static const int layoutaxis[] = {
+	1, /* layout axis: 1 = x, 2 = y; negative values mirror the layout, setting the master area to the right / bottom instead of left / top */
+	2, /* master axis: 1 = x (from left to right), 2 = y (from top to bottom), 3 = z (monocle) */
+	2, /* stack axis:  1 = x (from left to right), 2 = y (from top to bottom), 3 = z (monocle) */
+};
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -80,7 +88,7 @@ ResourcePref resources[] = {
 		{ "snap",          		INTEGER, &snap },
 		{ "showbar",          	INTEGER, &showbar },
 		{ "topbar",          	INTEGER, &topbar },
-		{ "nmaster",          	INTEGER, &nmaster },
+		// { "nmaster",          	INTEGER, &nmaster },
 		{ "resizehints",       	INTEGER, &resizehints },
 		{ "mfact",      	 	FLOAT,   &mfact },
 };
@@ -92,8 +100,8 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
-	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
+	{ MODKEY,                       XK_i,      shiftmastersplit, {.i = +1} },   /* increase the number of tiled clients in the master area */
+	{ MODKEY,                       XK_d,      shiftmastersplit, {.i = -1} },   /* reduce the number of tiled clients in the master area */
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_Return, zoom,           {0} },
@@ -121,6 +129,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY|ControlMask,           XK_t,      rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
+	{ MODKEY|ControlMask,           XK_Tab,    rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
+	{ MODKEY|ControlMask|ShiftMask, XK_Tab,    rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
+	{ MODKEY|ControlMask,           XK_Return, mirrorlayout,     {0} },
 };
 
 /* button definitions */

@@ -1,16 +1,16 @@
 * Tasks
   - (x) attachbelow
   - (x) https://dwm.suckless.org/patches/focusonclick/
-  - ( ) https://dwm.suckless.org/patches/flextile/
+  - (x) https://dwm.suckless.org/patches/flextile/
   - (x) https://dwm.suckless.org/patches/fullscreen/
   - (x) https://dwm.suckless.org/patches/hide_vacant_tags/
-  - ( ) https://dwm.suckless.org/patches/xresources/
+  - (x) https://dwm.suckless.org/patches/xresources/
 
 * Later
+  - ( ) https://dwm.suckless.org/patches/gaps/
   - https://dwm.suckless.org/patches/bar_height/
   - https://dwm.suckless.org/patches/cfacts/
   - https://dwm.suckless.org/patches/autostart/
-  - https://dwm.suckless.org/patches/gaps/
 
 * Notes
   - https://dwm.suckless.org/patches/bartoggle/
