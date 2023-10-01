@@ -19,6 +19,7 @@ static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor },
+       [SchemeMonSel]  = { "#ffffff",  "#1a152c",  selbordercolor },
 };
 
 /* tagging */
