@@ -21,38 +21,10 @@ static char *colors[][3] = {
        [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
-typedef struct {
-	const char *name;
-	const void *cmd;
-} Sp;
-
-typedef enum  {
-	SP_TERMINAL,
-	SP_NOTES,
-	SP_SYSMONITOR,
-} SpType;
-
-#define SP_IN_TERM(NAME, SIZE, ...)  \
-	{NAME, (const char*[]){"st", "-n", NAME, "-g", SIZE, __VA_ARGS__ }}
-
-#define SP_BIND_KEY(MOD, KEY, SP_ID) \
-	{ MOD, KEY, togglescratch,  {.ui = SP_ID } }
-
-static Sp scratchpads[] = {
-	[SP_TERMINAL] =
-		SP_IN_TERM("spterm", "150x40", NULL),
-
-	[SP_NOTES] =
-		SP_IN_TERM("spnotes", "210x50", "-d", "/home/imsohexy/nixos/extras/notes", "-e",
-			"nvim", "index.norg", NULL),
-
-	[SP_SYSMONITOR] =
-		SP_IN_TERM("spmon", "210x50", "-e", "gotop", NULL),
-};
-
-
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+#include "scratchpad.h"
 
 /* include(s) depending on the tags array */
 #include "flextile.h"
@@ -61,14 +33,11 @@ static const Rule rules[] = {
 	/* class            instance    title       tags mask               float   monitor */
 	{ "obs",            NULL,       NULL,       1 << 5,       					0,			-1 },
 	{ "easyeffects",    NULL,       NULL,       1 << 4,       					0,			-1 },
-	{ NULL,				      "spterm",		NULL,				SPTAG(SP_TERMINAL),			1,			-1 },
-	{ NULL,				      "spnotes",	NULL,				SPTAG(SP_NOTES),				1,			-1 },
-	{ NULL,				      "spmon",	NULL,				SPTAG(SP_SYSMONITOR),				1,			-1 },
+	SP_RULES,
 };
 
 /* layout(s) */
 static float mfact     = 0.6; /* factor of master area size [0.05..0.95] */
-// static int nmaster     = 1;    /* number of clients in master area */
 static int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 static const int attachbelow = 1;    /* 1 means attach after the currently active window */
@@ -92,14 +61,12 @@ static const Layout layouts[] = {
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
-	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
+	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-/*
- * Xresources preferences to load at startup
- */
+// Xresources preferences to load at startup
 ResourcePref resources[] = {
 		{ "font",               STRING,  &font },
 		{ "normbgcolor",        STRING,  &normbgcolor },
@@ -112,7 +79,6 @@ ResourcePref resources[] = {
 		{ "snap",          	  	INTEGER, &snap },
 		{ "showbar",          	INTEGER, &showbar },
 		{ "topbar",          	  INTEGER, &topbar },
-		// { "nmaster",          	INTEGER, &nmaster },
 		{ "resizehints",        INTEGER, &resizehints },
 		{ "mfact",      		  	FLOAT,   &mfact },
 };
@@ -123,7 +89,7 @@ static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },             // Quit window
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },             // Restart dwm
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = (const char*[]){ "sensible-terminal", NULL } } },
+	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ "sensible-terminal", NULL } } },
 	// { MODKEY,                       XK_b,      togglebar,      {0} },
 
 	// Focus
@@ -150,9 +116,9 @@ static const Key keys[] = {
 	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[1]} },
 	// { MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ControlMask,           XK_t,        rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
-	{ MODKEY|ControlMask,           XK_y,        rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
-	{ MODKEY|ControlMask,           XK_Return,   rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
-	{ MODKEY|ControlMask|ShiftMask, XK_Tab,      mirrorlayout,     {0} },
+	{ MODKEY|ControlMask,           XK_m,        rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
+	{ MODKEY|ControlMask,           XK_y,        rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
+	{ MODKEY|ControlMask,           XK_r,        mirrorlayout,     {0} },
 	{ MODKEY|ShiftMask,             XK_b,        togglebar,        {0} },
 
 	// Monitor
@@ -169,28 +135,28 @@ static const Key keys[] = {
 	// Workspaces
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
-	TAGKEYS(                        XK_1,                      0)
-	TAGKEYS(                        XK_2,                      1)
-	TAGKEYS(                        XK_3,                      2)
-	TAGKEYS(                        XK_4,                      3)
-	TAGKEYS(                        XK_5,                      4)
-	TAGKEYS(                        XK_6,                      5)
-	TAGKEYS(                        XK_7,                      6)
-	TAGKEYS(                        XK_8,                      7)
-	TAGKEYS(                        XK_9,                      8)
+	TAGKEYS(XK_1, 0),
+	TAGKEYS(XK_2, 1),
+	TAGKEYS(XK_3, 2),
+	TAGKEYS(XK_4, 3),
+	TAGKEYS(XK_5, 4),
+	TAGKEYS(XK_6, 5),
+	TAGKEYS(XK_7, 6),
+	TAGKEYS(XK_8, 7),
+	TAGKEYS(XK_9, 8),
 };
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle, ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
 	/* click                event mask      button          function        argument */
-	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
+	// { ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
-	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
-	{ ClkClientWin,         MODKEY,         Button1,        resizemouse,    {0} },
+	// { ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
+	{ ClkClientWin,         MODKEY|ALTKEY,  Button1,        resizemouse,    {0} },
 	{ ClkTagBar,            0,              Button1,        view,           {0} },
-	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
-	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
-	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+	// { ClkTagBar,            0,              Button3,        toggleview,     {0} },
+	// { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
+	// { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
 
