@@ -29,7 +29,7 @@ static Sp scratchpads[] = {
 
 #define SP_RULES \
 	/* class     instance    title       tags mask               float   monitor */ \
-	{ NULL,	     "spterm",		NULL,				SPTAG(SP_TERMINAL),			1,			-1 }, \
-	{ NULL,	     "spnotes",	NULL,				SPTAG(SP_NOTES),				1,			-1 }, \
-	{ NULL,	     "spmon",	  NULL,				SPTAG(SP_SYSMONITOR),   1,			-1 }
+	{ NULL,	     "spterm",   NULL,				SPTAG(SP_TERMINAL),			1,			-1 }, \
+	{ NULL,	     "spnotes",	 NULL,				SPTAG(SP_NOTES),				1,			-1 }, \
+	{ NULL,	     "spmon",	   NULL,				SPTAG(SP_SYSMONITOR),   1,			-1 }
 

@@ -18,7 +18,7 @@ static char selbgcolor[]            = "#005577";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor },
 };
 
 /* tagging */
@@ -158,5 +158,10 @@ static const Button buttons[] = {
 	// { ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	// { ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	// { ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
+};
+
+static const char* autostart_cmds[] = {
+	"~/nixos/packages/dwm/autostart.sh &",
+	// "~/scripts/monitor.sh on &",
 };
 

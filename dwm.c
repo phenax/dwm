@@ -2295,6 +2295,8 @@ main(int argc, char *argv[])
 		die("pledge");
 #endif /* __OpenBSD__ */
 	scan();
+	for (int i = 0; i < LENGTH(autostart_cmds); i++)
+		system(autostart_cmds[i]);
 	run();
 	cleanup();
 	XCloseDisplay(dpy);

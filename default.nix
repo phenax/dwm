@@ -10,7 +10,7 @@ stdenv.mkDerivation rec {
     libXinerama
     libXft
     xorg.xorgserver
-    clang
+    # clang
   ];
 
   unpackPhase = ''cp -r $src/* .'';
