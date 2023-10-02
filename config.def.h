@@ -1,5 +1,7 @@
 /* appearance */
 
+#define DEBUG
+
 /* See LICENSE file for copyright and license details. */
 static unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int gappx     = 4;        /* gaps between windows */
@@ -132,6 +134,9 @@ static const Key keys[] = {
 	SP_BIND_KEY(MODKEY, XK_t, SP_TERMINAL),
 	SP_BIND_KEY(MODKEY, XK_n, SP_NOTES),
 	SP_BIND_KEY(MODKEY, XK_o, SP_SYSMONITOR),
+	SP_BIND_KEY(MODKEY, XK_s, SP_CALENDAR),
+	SP_BIND_KEY(MODKEY, XK_g, SP_SKETCHPAD),
+	SP_BIND_KEY(MODKEY, XK_u, SP_CHATGPT),
 
 	// Workspaces
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
