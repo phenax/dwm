@@ -93,7 +93,6 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },             // Quit window
 	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },             // Restart dwm
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ "sensible-terminal", NULL } } },
-	// { MODKEY,                       XK_b,      togglebar,      {0} },
 
 	// Focus
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -112,17 +111,15 @@ static const Key keys[] = {
 	{ MODKEY|ALTKEY,                XK_l,      setmfact,       {.f = +0.05} },
 
 	// Layout
-	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY|ShiftMask,             XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,             					XK_f,      fullscreen,     {0} },
-	{ MODKEY|ShiftMask,             XK_backslash,  togglefloating, {0} },
-	// { MODKEY,                       XK_m,      setlayout,      {.v = &layouts[1]} },
-	// { MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ControlMask,           XK_t,        rotatelayoutaxis, {.i = 0} },    /* 0 = layout axis */
-	{ MODKEY|ControlMask,           XK_m,        rotatelayoutaxis, {.i = 1} },    /* 1 = master axis */
-	{ MODKEY|ControlMask,           XK_y,        rotatelayoutaxis, {.i = 2} },    /* 2 = stack axis */
-	{ MODKEY|ControlMask,           XK_r,        mirrorlayout,     {0} },
-	{ MODKEY|ShiftMask,             XK_b,        togglebar,        {0} },
+	{ MODKEY,                       XK_Tab,        view,              {0} },
+	{ MODKEY|ShiftMask,             XK_t,          setlayout,         {.v = &layouts[0]} },
+	{ MODKEY,             					XK_f,          fullscreen,        {0} },
+	{ MODKEY|ShiftMask,             XK_backslash,  togglefloating,    {0} },
+	{ MODKEY|ControlMask,           XK_t,          rotatelayoutaxis,  {.i = 0} }, /* 0 = layout axis */
+	{ MODKEY|ControlMask,           XK_m,          rotatelayoutaxis,  {.i = 1} }, /* 1 = master axis */
+	{ MODKEY|ControlMask,           XK_y,          rotatelayoutaxis,  {.i = 2} }, /* 2 = stack axis */
+	{ MODKEY|ControlMask,           XK_r,          mirrorlayout,      {0} },
+	// { MODKEY|ShiftMask,             XK_b,          togglebar,         {0} },
 
 	// Monitor
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -168,6 +165,6 @@ static const Button buttons[] = {
 
 static const char* autostart_cmds[] = {
 	"~/scripts/monitor.sh on left-of",
-	"setsid -f ~/nixos/packages/dwm/autostart.sh",
+	"setsid -f ~/nixos/packages/dwm/autostart.sh > /tmp/dwm-autostart-logs.log",
 	"xset r rate 350 30",
 };
