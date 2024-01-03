@@ -33,9 +33,10 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 #include "flextile.h"
 
 static const Rule rules[] = {
-	/* class            instance    title       tags mask               float   monitor */
-	{ "obs",            NULL,       NULL,       1 << 4,       					0,			-1 },
-	{ "easyeffects",    NULL,       NULL,       1 << 3,       					0,			-1 },
+	/* class            instance    title       tags mask             float   monitor */
+	{ "obs",            NULL,       NULL,       1 << 4,       				0,			-1 },
+	{ "easyeffects",    NULL,       NULL,       1 << 3,       	  		0,			-1 },
+	{ "lf-selector",    NULL,       NULL,       0,		       					1,			-1 },
 	SP_RULES,
 };
 
