@@ -112,10 +112,9 @@ static const Key keys[] = {
 	{ MODKEY|ALTKEY,                XK_l,      setmfact,       {.f = +0.05} },
 
 	// Layout
-	{ MODKEY,                       XK_Tab,        view,              {0} },
-	{ MODKEY|ShiftMask,             XK_t,          setlayout,         {.v = &layouts[0]} },
+	// { MODKEY|ShiftMask,             XK_t,          setlayout,         {.v = &layouts[0]} },
 	{ MODKEY,             					XK_f,          fullscreen,        {0} },
-	{ MODKEY|ShiftMask,             XK_backslash,  togglefloating,    {0} },
+	{ MODKEY|ControlMask,           XK_backslash,  togglefloating,    {0} },
 	{ MODKEY|ControlMask,           XK_t,          rotatelayoutaxis,  {.i = 0} }, /* 0 = layout axis */
 	{ MODKEY|ControlMask,           XK_m,          rotatelayoutaxis,  {.i = 1} }, /* 1 = master axis */
 	{ MODKEY|ControlMask,           XK_y,          rotatelayoutaxis,  {.i = 2} }, /* 2 = stack axis */
@@ -137,6 +136,7 @@ static const Key keys[] = {
 	SP_BIND_KEY(MODKEY, XK_u, SP_CHATGPT),
 
 	// Workspaces
+	{ MODKEY,                       XK_Tab,    view,              {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	TAGKEYS(XK_1, 0),
