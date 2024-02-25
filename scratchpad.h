@@ -45,7 +45,7 @@ static Sp scratchpads[] = {
 			"nvim", "index.norg", NULL),
 
 	[SP_SYSMONITOR] =
-		SP_IN_TERM("spmon", SP_SIZE_T_LG, "-e", "gotop", NULL),
+		SP_IN_TERM("spmon", SP_SIZE_T_LG, "-e", "btm", NULL),
 
 	[SP_CALENDAR] =
 		SP_IN_TERM("spcal", SP_SIZE_T_SM, "-e", "wyrd", NULL),
