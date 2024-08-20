@@ -1,15 +1,15 @@
 /* appearance */
 
-#define DEBUG
+/* #define DEBUG */
 
 /* See LICENSE file for copyright and license details. */
-static unsigned int borderpx  = 2;        /* border pixel of windows */
-static const unsigned int gappx     = 4;        /* gaps between windows */
-static unsigned int snap      = 32;       /* snap pixel */
-static int showbar            = 1;        /* 0 means no bar */
-static int topbar             = 1;        /* 0 means bottom bar */
+static unsigned int borderpx        = 2;
+static const unsigned int gappx     = 4;
+static unsigned int snap            = 32;       /* snap pixel */
+static int showbar                  = 1;        /* 0 means no bar */
+static int topbar                   = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
-static char font[]            = "JetBrainsMono Nerd Font:size=8";
+static char font[]                  = "JetBrainsMono Nerd Font:size=8";
 static const char *fonts[]          = { font, "Font Awesome 5 Free:size=7", "Symbols Nerd Font:size=7" };
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
@@ -18,10 +18,10 @@ static char selfgcolor[]            = "#eeeeee";
 static char selbordercolor[]        = "#005577";
 static char selbgcolor[]            = "#005577";
 static char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor },
-       [SchemeMonSel]  = { "#ffffff",  "#1a152c",  selbordercolor },
+	/*               fg           bg           border   */
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor },
+	[SchemeMonSel]  = { "#ffffff",  "#1a152c",  selbordercolor },
 };
 
 /* tagging */
@@ -37,6 +37,7 @@ static const Rule rules[] = {
 	{ "obs",            NULL,       NULL,       1 << 4,       				0,			-1 },
 	{ "easyeffects",    NULL,       NULL,       1 << 3,       	  		0,			-1 },
 	{ "lf-selector",    NULL,       NULL,       0,		       					1,			-1 },
+	{ "sidekick",       NULL,       NULL,       1,		       					0,			 0 },
 	SP_RULES,
 };
 
@@ -72,19 +73,19 @@ static const Layout layouts[] = {
 
 // Xresources preferences to load at startup
 ResourcePref resources[] = {
-		{ "font",               STRING,  &font },
-		{ "normbgcolor",        STRING,  &normbgcolor },
-		{ "normbordercolor",    STRING,  &normbordercolor },
-		{ "normfgcolor",        STRING,  &normfgcolor },
-		{ "selbgcolor",         STRING,  &selbgcolor },
-		{ "selbordercolor",     STRING,  &selbordercolor },
-		{ "selfgcolor",         STRING,  &selfgcolor },
-		{ "borderpx",          	INTEGER, &borderpx },
-		{ "snap",          	  	INTEGER, &snap },
-		{ "showbar",          	INTEGER, &showbar },
-		{ "topbar",          	  INTEGER, &topbar },
-		{ "resizehints",        INTEGER, &resizehints },
-		{ "mfact",      		  	FLOAT,   &mfact },
+	{ "font",               STRING,  &font },
+	{ "normbgcolor",        STRING,  &normbgcolor },
+	{ "normbordercolor",    STRING,  &normbordercolor },
+	{ "normfgcolor",        STRING,  &normfgcolor },
+	{ "selbgcolor",         STRING,  &selbgcolor },
+	{ "selbordercolor",     STRING,  &selbordercolor },
+	{ "selfgcolor",         STRING,  &selfgcolor },
+	{ "borderpx",          	INTEGER, &borderpx },
+	{ "snap",          	  	INTEGER, &snap },
+	{ "showbar",          	INTEGER, &showbar },
+	{ "topbar",          	  INTEGER, &topbar },
+	{ "resizehints",        INTEGER, &resizehints },
+	{ "mfact",      		  	FLOAT,   &mfact },
 };
 
 #include "movestack.c"
@@ -128,12 +129,13 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	// Scratchpads
-	SP_BIND_KEY(MODKEY, XK_t, SP_TERMINAL),
-	SP_BIND_KEY(MODKEY, XK_n, SP_NOTES),
-	SP_BIND_KEY(MODKEY, XK_o, SP_SYSMONITOR),
-	SP_BIND_KEY(MODKEY, XK_s, SP_CALENDAR),
-	SP_BIND_KEY(MODKEY, XK_g, SP_SKETCHPAD),
-	SP_BIND_KEY(MODKEY, XK_u, SP_CHATGPT),
+	SP_BIND_KEY(MODKEY,             XK_t, SP_TERMINAL),
+	SP_BIND_KEY(MODKEY,             XK_n, SP_NOTES),
+	SP_BIND_KEY(MODKEY,             XK_o, SP_SYSMONITOR),
+	SP_BIND_KEY(MODKEY,             XK_s, SP_CALENDAR),
+	SP_BIND_KEY(MODKEY,             XK_g, SP_SKETCHPAD),
+	SP_BIND_KEY(MODKEY,             XK_u, SP_CHATGPT),
+	SP_BIND_KEY(MODKEY|ControlMask, XK_u, SP_CLAUDE),
 
 	// Workspaces
 	{ MODKEY,                       XK_Tab,    view,              {0} },

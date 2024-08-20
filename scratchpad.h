@@ -10,6 +10,7 @@ typedef enum  {
 	SP_CALENDAR,
 	SP_SKETCHPAD,
 	SP_CHATGPT,
+	SP_CLAUDE,
 } SpType;
 
 #define SP_IN_TERM(NAME, SIZE, ...)  \
@@ -55,6 +56,9 @@ static Sp scratchpads[] = {
 
 	[SP_CHATGPT] =
 		SP_BROWSER_APP("chat.openai.com", SP_SIZE_W_LG, "https://chat.openai.com/"),
+
+	[SP_CLAUDE] =
+		SP_BROWSER_APP("claude.ai", SP_SIZE_W_LG, "https://claude.ai/chats"),
 };
 
 #define SP_RULES \
@@ -63,5 +67,6 @@ static Sp scratchpads[] = {
   SP_RULE("spmon", SP_SYSMONITOR), \
   SP_RULE("spcal", SP_CALENDAR), \
   SP_RULE("excalidraw.com", SP_SKETCHPAD), \
-  SP_RULE("chat.openai.com", SP_CHATGPT)
+  SP_RULE("chat.openai.com", SP_CHATGPT), \
+  SP_RULE("claude.ai", SP_CLAUDE)
 
