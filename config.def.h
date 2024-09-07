@@ -133,6 +133,7 @@ static const Key keys[] = {
 	SP_BIND_KEY(MODKEY,             XK_n, SP_NOTES),
 	SP_BIND_KEY(MODKEY,             XK_o, SP_SYSMONITOR),
 	SP_BIND_KEY(MODKEY,             XK_s, SP_CALENDAR),
+	SP_BIND_KEY(MODKEY,             XK_m, SP_RSS_FEED),
 	SP_BIND_KEY(MODKEY,             XK_g, SP_SKETCHPAD),
 	SP_BIND_KEY(MODKEY,             XK_u, SP_CHATGPT),
 	SP_BIND_KEY(MODKEY|ControlMask, XK_u, SP_CLAUDE),
