@@ -93,7 +93,7 @@ ResourcePref resources[] = {
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },             // Quit window
-	{ MODKEY|ShiftMask,             XK_r,      quit,           {0} },             // Restart dwm
+	{ MODKEY|ControlMask|ShiftMask, XK_r,      quit,           {0} },             // Restart dwm
 	{ MODKEY|ControlMask,           XK_Return, spawn,          {.v = (const char*[]){ "sensible-terminal", NULL } } },
 
 	// Focus
