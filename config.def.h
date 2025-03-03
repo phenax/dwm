@@ -35,9 +35,10 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 static const Rule rules[] = {
 	/* class            instance    title       tags mask             float   monitor */
 	{ "obs",            NULL,       NULL,       1 << 4,       				0,			-1 },
-	{ "easyeffects",    NULL,       NULL,       1 << 3,       	  		0,			-1 },
+	{ "easyeffects",    NULL,       NULL,       1 << 3,       	  		0,			 0 },
 	{ "lf-selector",    NULL,       NULL,       0,		       					1,			-1 },
 	{ "sidekick",       NULL,       NULL,       1,		       					0,			 0 },
+	{ "thunderbird",    NULL,       NULL,       1 << 1, 	  					0,			 0 },
 	SP_RULES,
 };
 
@@ -129,14 +130,12 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
 	// Scratchpads
-	SP_BIND_KEY(MODKEY,             XK_t, SP_TERMINAL),
-	SP_BIND_KEY(MODKEY,             XK_n, SP_NOTES),
-	SP_BIND_KEY(MODKEY,             XK_o, SP_SYSMONITOR),
-	SP_BIND_KEY(MODKEY,             XK_s, SP_CALENDAR),
-	SP_BIND_KEY(MODKEY,             XK_m, SP_RSS_FEED),
-	SP_BIND_KEY(MODKEY,             XK_g, SP_SKETCHPAD),
-	SP_BIND_KEY(MODKEY,             XK_u, SP_CHATGPT),
-	SP_BIND_KEY(MODKEY|ControlMask, XK_u, SP_CLAUDE),
+	SP_BIND_KEY(MODKEY,                 XK_t, SP_TERMINAL),
+	SP_BIND_KEY(MODKEY,                 XK_n, SP_NOTES),
+	SP_BIND_KEY(MODKEY,                 XK_o, SP_SYSMONITOR),
+	SP_BIND_KEY(MODKEY,                 XK_s, SP_CALENDAR),
+	SP_BIND_KEY(MODKEY,                 XK_m, SP_RSS_FEED),
+	SP_BIND_KEY(MODKEY,                 XK_g, SP_SKETCHPAD),
 
 	// Workspaces
 	{ MODKEY,                       XK_Tab,    view,              {0} },

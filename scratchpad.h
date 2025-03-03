@@ -10,8 +10,6 @@ typedef enum  {
 	SP_CALENDAR,
 	SP_RSS_FEED,
 	SP_SKETCHPAD,
-	SP_CHATGPT,
-	SP_CLAUDE,
 } SpType;
 
 #define SP_IN_TERM(NAME, SIZE, ...)  \
@@ -44,7 +42,7 @@ static Sp scratchpads[] = {
 
 	[SP_NOTES] =
 		SP_IN_TERM("spnotes", SP_SIZE_T_LG, "-d", "/home/imsohexy/nixos/extras/notes", "-e",
-			"nvim", "index.norg", NULL),
+			"nvim", "index.org", NULL),
 
 	[SP_SYSMONITOR] =
 		SP_IN_TERM("spmon", SP_SIZE_T_LG, "-e", "btm", NULL),
@@ -57,12 +55,6 @@ static Sp scratchpads[] = {
 
 	[SP_SKETCHPAD] =
 		SP_BROWSER_APP("excalidraw.com", SP_SIZE_W_LG, "https://excalidraw.com/"),
-
-	[SP_CHATGPT] =
-		SP_BROWSER_APP("chat.openai.com", SP_SIZE_W_LG, "https://chat.openai.com/"),
-
-	[SP_CLAUDE] =
-		SP_BROWSER_APP("claude.ai", SP_SIZE_W_LG, "https://claude.ai/chats"),
 };
 
 #define SP_RULES \
@@ -71,7 +63,5 @@ static Sp scratchpads[] = {
   SP_RULE("spmon", SP_SYSMONITOR), \
   SP_RULE("spcal", SP_CALENDAR), \
   SP_RULE("sprss", SP_RSS_FEED), \
-  SP_RULE("excalidraw.com", SP_SKETCHPAD), \
-  SP_RULE("chat.openai.com", SP_CHATGPT), \
-  SP_RULE("claude.ai", SP_CLAUDE)
+  SP_RULE("excalidraw.com", SP_SKETCHPAD)
 
