@@ -4,8 +4,8 @@
 
 /* See LICENSE file for copyright and license details. */
 static unsigned int borderpx        = 2;
-static const unsigned int gappx     = 4;
-static unsigned int snap            = 32;       /* snap pixel */
+static const unsigned int gappx     = 0;
+static unsigned int snap            = 6;        /* snap pixel */
 static int showbar                  = 1;        /* 0 means no bar */
 static int topbar                   = 1;        /* 0 means bottom bar */
 static const int focusonwheel       = 0;
