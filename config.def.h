@@ -21,7 +21,7 @@ static char *colors[][3] = {
 	/*               fg           bg           border   */
 	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
 	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor },
-	[SchemeMonSel]  = { "#ffffff",  "#141313",  selbordercolor },
+	[SchemeMonSel]  = { "#ffffff",  "#101414",  selbordercolor },
 };
 
 /* tagging */
@@ -134,7 +134,6 @@ static const Key keys[] = {
 	SP_BIND_KEY(MODKEY,                 XK_n, SP_NOTES),
 	SP_BIND_KEY(MODKEY,                 XK_o, SP_SYSMONITOR),
 	SP_BIND_KEY(MODKEY,                 XK_s, SP_CALENDAR),
-	SP_BIND_KEY(MODKEY,                 XK_m, SP_RSS_FEED),
 	SP_BIND_KEY(MODKEY,                 XK_g, SP_SKETCHPAD),
 
 	// Workspaces

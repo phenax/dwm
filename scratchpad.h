@@ -8,7 +8,6 @@ typedef enum  {
 	SP_NOTES,
 	SP_SYSMONITOR,
 	SP_CALENDAR,
-	SP_RSS_FEED,
 	SP_SKETCHPAD,
 } SpType;
 
@@ -50,9 +49,6 @@ static Sp scratchpads[] = {
 	[SP_CALENDAR] =
 		SP_IN_TERM("spcal", SP_SIZE_T_SM, "-e", "wyrd", NULL),
 
-	[SP_RSS_FEED] =
-		SP_IN_TERM("sprss", SP_SIZE_T_SM, "-e", "newsboat", NULL),
-
 	[SP_SKETCHPAD] =
 		SP_BROWSER_APP("excalidraw.com", SP_SIZE_W_LG, "https://excalidraw.com/"),
 };
@@ -62,6 +58,5 @@ static Sp scratchpads[] = {
   SP_RULE("spnotes", SP_NOTES), \
   SP_RULE("spmon", SP_SYSMONITOR), \
   SP_RULE("spcal", SP_CALENDAR), \
-  SP_RULE("sprss", SP_RSS_FEED), \
   SP_RULE("excalidraw.com", SP_SKETCHPAD)
 
