@@ -48,4 +48,4 @@ x:
 run: clean dwm
 	DISPLAY=:1 ./dwm
 
-.PHONY: all clean dist install uninstall
+.PHONY: all clean dist install uninstall x run

@@ -31,10 +31,11 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 /* include(s) depending on the tags array */
 #include "flextile.h"
+#include "centered_tile.h"
 
 static const Rule rules[] = {
 	/* class            instance    title       tags mask             float   monitor */
-	{ "obs",            NULL,       NULL,       1 << 4,       				0,			-1 },
+	{ "obs",            NULL,       NULL,       1 << 4,       				0,			 0 },
 	{ "easyeffects",    NULL,       NULL,       1 << 3,       	  		0,			 0 },
 	{ "lf-selector",    NULL,       NULL,       0,		       					1,			-1 },
 	{ "sidekick",       NULL,       NULL,       1,		       					0,			 0 },
@@ -58,6 +59,7 @@ static const Layout layouts[] = {
 	{ "[]=",      tile },
 	{ "><>",      NULL },
 	{ "[M]",      monocle },
+	{ "=[]=",     centered_tile },
 };
 
 /* key definitions */
@@ -115,13 +117,15 @@ static const Key keys[] = {
 
 	// Layout
 	// { MODKEY|ShiftMask,             XK_t,          setlayout,         {.v = &layouts[0]} },
-	{ MODKEY,             					XK_f,          fullscreen,        {0} },
+	{ MODKEY|ControlMask,           XK_c,          setlayout,         {.v = &layouts[3]} }, // Center tile
+	{ MODKEY|ControlMask,           XK_t,          setlayout,         {.v = &layouts[0]} }, // Tile
+	{ MODKEY,                       XK_f,          fullscreen,        {0} },
 	{ MODKEY|ControlMask,           XK_backslash,  togglefloating,    {0} },
-	{ MODKEY|ControlMask,           XK_t,          rotatelayoutaxis,  {.i = 0} }, /* 0 = layout axis */
+	{ MODKEY|ControlMask,           XK_w,          rotatelayoutaxis,  {.i = 0} }, /* 0 = layout axis */
 	{ MODKEY|ControlMask,           XK_m,          rotatelayoutaxis,  {.i = 1} }, /* 1 = master axis */
 	{ MODKEY|ControlMask,           XK_y,          rotatelayoutaxis,  {.i = 2} }, /* 2 = stack axis */
 	{ MODKEY|ControlMask,           XK_r,          mirrorlayout,      {0} },
-	// { MODKEY|ShiftMask,             XK_b,          togglebar,         {0} },
+	{ MODKEY|ControlMask,           XK_b,          togglebar,         {0} },
 
 	// Monitor
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
@@ -134,7 +138,7 @@ static const Key keys[] = {
 	SP_BIND_KEY(MODKEY,                 XK_n, SP_NOTES),
 	SP_BIND_KEY(MODKEY,                 XK_o, SP_SYSMONITOR),
 	SP_BIND_KEY(MODKEY,                 XK_s, SP_CALENDAR),
-	SP_BIND_KEY(MODKEY,                 XK_g, SP_SKETCHPAD),
+	// SP_BIND_KEY(MODKEY,                 XK_g, SP_SKETCHPAD),
 
 	// Workspaces
 	{ MODKEY,                       XK_Tab,    view,              {0} },

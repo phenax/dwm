@@ -41,7 +41,7 @@ static Sp scratchpads[] = {
 
 	[SP_NOTES] =
 		SP_IN_TERM("spnotes", SP_SIZE_T_LG, "-d", "/home/imsohexy/nixos/extras/notes", "-e",
-			"nvim", "index.org", NULL),
+			"sensible-editor", "index.org", NULL),
 
 	[SP_SYSMONITOR] =
 		SP_IN_TERM("spmon", SP_SIZE_T_LG, "-e", "btm", NULL),
